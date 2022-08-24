@@ -7,7 +7,7 @@ dotenv.config()
 const authentication = async (req, res, next) => {
   const autheHeader = req.headers.authorization
   if (!autheHeader || !autheHeader.startsWith('Bearer')) {
-    throw new Unauthenticated('Authentication invalid')
+    throw new Unauthenticated('Token inválido')
   }
 
   const token = autheHeader.split(' ')[1]
@@ -17,7 +17,7 @@ const authentication = async (req, res, next) => {
     req.user = { userId: payload.userId }
     next()
   } catch (error) {
-    throw new Unauthenticated('Authentication invalid')
+    throw new Unauthenticated('Token inválido')
   }
 }
 

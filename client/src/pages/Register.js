@@ -1,12 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyledRegister } from '../styles/Register.styled'
 import FormRow from '../components/FormRow'
 import { toast } from 'react-toastify'
+import { useSelector, useDispatch } from 'react-redux'
+import { loginUser, registerUser } from '../user/userSlice'
+import { useNavigate } from 'react-router-dom'
 
 const inicialState = { name: '', email: '', password: '', isRegister: true }
 
 const Register = () => {
+  const navigate = useNavigate()
+
   const [values, setValues] = useState(inicialState)
+
+  const { user, isLoading } = useSelector((store) => store.user)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (user) {
+      navigate('/')
+    }
+  }, [user, navigate])
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -17,12 +31,19 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const { name, email, password, isRegister } = values
+
     if (!email || !password || (!isRegister && !name)) {
       toast.error('Por favor, preencha todos os campos', {
         position: toast.POSITION.TOP_CENTER,
       })
       return
     }
+    if (isRegister) {
+      dispatch(loginUser({ email, password }))
+      return
+    }
+
+    dispatch(registerUser({ name, email, password }))
   }
 
   const toggleForm = () => {
@@ -59,8 +80,8 @@ const Register = () => {
           handleChange={handleChange}
           labelText='Senha:'
         />
-        <button type='submit' className='submit'>
-          Enviar
+        <button type='submit' className='submit' disabled={isLoading}>
+          {isLoading ? 'Enviando...' : 'Enviar'}
         </button>
       </form>
 

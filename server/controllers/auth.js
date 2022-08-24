@@ -5,27 +5,27 @@ import { Unauthenticated, BadRequest } from '../errors/index.js'
 const register = async (req, res) => {
   const user = await User.create({ ...req.body })
   const token = user.createJWT()
-  res.status(StatusCodes.CREATED).json({ user: { name: user.name }, token })
+  res.status(StatusCodes.CREATED).json({ user: { name: user.name, token } })
 }
 
 const login = async (req, res) => {
-  const { name, email, password } = req.body
-  if (!name || !email || !password) {
-    throw new BadRequest('Please provide a name, email and password')
+  const { email, password } = req.body
+  if (!email || !password) {
+    throw new BadRequest('Por favor, preencha os campos de email e password')
   }
 
   const user = await User.findOne({ email })
   if (!user) {
-    throw new Unauthenticated('Invalid credentials, user not find')
+    throw new Unauthenticated('Usuário não encontrado')
   }
 
   const isPasswordCorrect = await user.comparePassword(password)
   if (!isPasswordCorrect) {
-    throw new Unauthenticated('Invalid credentials, incorrect password')
+    throw new Unauthenticated('Senha incorreta')
   }
 
   const token = user.createJWT()
-  res.status(StatusCodes.OK).json({ user: { name: user.name }, token })
+  res.status(StatusCodes.OK).json({ user: { name: user.name, token } })
 }
 
 export { register, login }

@@ -29,10 +29,13 @@ export const StyledRegister = styled.div`
     line-height: 2rem;
     label {
       font-size: 1.1rem;
+      padding-top: 1rem;
+      padding-bottom: 0.3rem;
     }
     input {
       width: 100%;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      padding: 0.3rem;
       border: solid 1px ${({ theme }) => theme.colors.lightPink};
       border-radius: 5px;
     }

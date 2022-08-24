@@ -1,9 +1,12 @@
 import React, { useRef } from 'react'
-import { useGlobalContext } from '../contexts/globalContext'
-
+import { useGlobalContext } from '../utils/globalContext'
 import { StyledHeader } from '../styles/Header.styled'
-import { IconSearch } from '@tabler/icons'
-import { IconMenu2, IconSquareX } from '@tabler/icons'
+import {
+  IconMenu2,
+  IconSquareX,
+  IconUserCircle,
+  IconSearch,
+} from '@tabler/icons'
 
 import axios from 'axios'
 
@@ -53,6 +56,14 @@ const Header = () => {
           </button>
         </form>
       )}
+      <div class='user-btn'>
+        <button onClick={() => {}}>
+          <IconUserCircle />
+        </button>
+        <div>
+          <button>Sair</button>
+        </div>
+      </div>
     </StyledHeader>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleNavbar } from '../styles/Navbar.styled'
-import { useGlobalContext } from '../contexts/globalContext'
+import { useGlobalContext } from '../utils/globalContext'
 import NavLinks from './NavLinks'
 
 const Navbar = () => {
