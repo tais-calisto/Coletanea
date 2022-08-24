@@ -5,7 +5,6 @@ export const StyledHeader = styled.header`
   width: 100%;
   padding: 1rem;
   height: 15vh;
-  /* background: ${({ theme }) => theme.colors.lightPink}; */
   color: ${({ theme }) => theme.colors.darkPink};
   font-family: monospace;
   margin: auto;
@@ -39,17 +38,46 @@ export const StyledHeader = styled.header`
     }
   }
 
+  button {
+    border: none;
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.darkPink};
+    cursor: pointer;
+  }
+
   form {
     justify-content: center;
     input {
       width: 80%;
       margin: 0 0.5rem;
     }
-    button {
-      border: none;
-      background-color: transparent;
-      color: ${({ theme }) => theme.colors.darkPink};
-      cursor: pointer;
+  }
+
+  .userIcon {
+    display: none;
+    @media screen and (min-width: 1024px) {
+      display: block;
+      button {
+        width: 150px;
+        display: flex;
+        grid-template-columns: 1fr 1fr 1fr;
+        background-color: ${({ theme }) => theme.colors.darkPink};
+        color: ${({ theme }) => theme.colors.lightPink};
+        padding: 0.5rem;
+        border-radius: 3px;
+        align-items: center;
+        justify-content: space-around;
+        text-transform: capitalize;
+      }
+
+      .logout {
+        position: absolute;
+        width: 150px;
+        top: 10vh;
+        border: none;
+        background-color: ${({ theme }) => theme.colors.lightPink};
+        color: ${({ theme }) => theme.colors.darkPink};
+      }
     }
   }
 

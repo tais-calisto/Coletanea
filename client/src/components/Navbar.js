@@ -1,15 +1,33 @@
 import React from 'react'
 import { StyleNavbar } from '../styles/Navbar.styled'
-import { useGlobalContext } from '../utils/globalContext'
 import NavLinks from './NavLinks'
+import { IconUserCircle } from '@tabler/icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { logoutUser } from '../user/userSlice'
 
 const Navbar = () => {
-  const { showNavbar } = useGlobalContext()
+  const dispach = useDispatch()
+  const { user, isSidebarOpen } = useSelector((store) => store.user)
 
   return (
     <StyleNavbar>
-      {showNavbar && (
+      {isSidebarOpen && (
         <div className='mobile'>
+          <div className='userSection'>
+            <div className='userIcon'>
+              <IconUserCircle />
+              {user.name}
+            </div>
+            <button
+              className='logout'
+              onClick={() => {
+                dispach(logoutUser())
+              }}
+            >
+              Sair
+            </button>
+          </div>
+
           <NavLinks />
         </div>
       )}

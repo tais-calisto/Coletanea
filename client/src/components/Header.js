@@ -1,17 +1,14 @@
 import React, { useRef } from 'react'
-import { useGlobalContext } from '../utils/globalContext'
 import { StyledHeader } from '../styles/Header.styled'
-import {
-  IconMenu2,
-  IconSquareX,
-  IconUserCircle,
-  IconSearch,
-} from '@tabler/icons'
-
+import { IconMenu2, IconSquareX, IconSearch } from '@tabler/icons'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
+import UserIcon from './UserIcon'
+import { toggleSidebar } from '../user/userSlice'
 
 const Header = () => {
-  const { setShowNavbar, showNavbar } = useGlobalContext()
+  const dispatch = useDispatch()
+  const { user, isSidebarOpen } = useSelector((store) => store.user)
 
   const searchBook = useRef(null)
 
@@ -34,17 +31,13 @@ const Header = () => {
         </h1>
         <i
           onClick={() => {
-            if (showNavbar) {
-              setShowNavbar(false)
-            } else {
-              setShowNavbar(true)
-            }
+            dispatch(toggleSidebar())
           }}
         >
-          {showNavbar ? <IconSquareX /> : <IconMenu2 />}
+          {isSidebarOpen ? <IconSquareX /> : <IconMenu2 />}
         </i>
       </div>
-      {!showNavbar && (
+      {!isSidebarOpen && (
         <form onSubmit={handleSubmit}>
           <input
             type='text'
@@ -56,14 +49,7 @@ const Header = () => {
           </button>
         </form>
       )}
-      <div class='user-btn'>
-        <button onClick={() => {}}>
-          <IconUserCircle />
-        </button>
-        <div>
-          <button>Sair</button>
-        </div>
-      </div>
+      <UserIcon />
     </StyledHeader>
   )
 }
