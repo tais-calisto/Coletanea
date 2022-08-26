@@ -11,25 +11,6 @@ const Header = () => {
   const dispatch = useDispatch()
   const { user, isSidebarOpen } = useSelector((store) => store.user)
 
-  const url = 'http://localhost:5000/api/v1/books/'
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   const search = searchBook.current.value
-  //   //API
-  //   try {
-  //     const { data } = await axios.get(
-  //       url,
-  //       { params: { search: search } },
-  //       { headers: { Authorization: `Bearer ${user.token}` } }
-  //     )
-  //     console.log(data)
-  //     return data
-  //   } catch (error) {
-  //     console.log(error.response.data.msg)
-  //   }
-  // }
-
   return (
     <StyledHeader>
       <div>

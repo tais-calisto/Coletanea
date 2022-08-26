@@ -1,8 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import customFetch from '../../utils/customFetch'
-import { getUserFromLS } from '../../utils/localStorage'
+import { createSlice } from '@reduxjs/toolkit'
 
-const inicialState = {
+const initialState = {
   isLoading: false,
   readingStatus: ['Lido', 'Lendo', 'Pretendo Ler', 'Releitura'],
   authors: [],
@@ -16,6 +14,7 @@ const inicialState = {
 const bookSlice = createSlice({
   name: 'book',
   initialState,
+  reducers: {},
 })
 
 export default bookSlice.reducer
