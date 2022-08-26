@@ -11,7 +11,8 @@ export const searchBook = createAsyncThunk(
   'book/searchBook',
   async (book, thunkAPI) => {
     try {
-      const response = await customFetch.get(`/books?search=${book.book}`, {
+      const response = await customFetch.get(`/books`, {
+        params: { search: book.book },
         headers: {
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
