@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { StyledRegister } from '../styles/Register.styled'
-import FormRow from '../components/FormRow'
+import FormRow from '../components/navbar/FormRow'
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
-import { loginUser, registerUser } from '../user/userSlice'
+import { loginUser, registerUser } from '../features/user/userSlice'
 import { useNavigate } from 'react-router-dom'
 
 const inicialState = { name: '', email: '', password: '', isRegister: true }

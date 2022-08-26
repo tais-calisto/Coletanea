@@ -1,16 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
-import customFetch from '../utils/customFetch'
+import customFetch from '../../utils/customFetch'
 import {
-  getUserfromLS,
+  getUserFromLS,
   addUserToLS,
-  removeUserfromLS,
-} from '../utils/localStorage'
+  removeUserFromLS,
+} from '../../utils/localStorage'
 
 const initialState = {
   isLoading: false,
   isSidebarOpen: false,
-  user: getUserfromLS(),
+  user: getUserFromLS(),
 }
 
 export const registerUser = createAsyncThunk(
@@ -46,7 +46,7 @@ const userSlice = createSlice({
     },
     logoutUser: (state) => {
       state.user = null
-      removeUserfromLS()
+      removeUserFromLS()
     },
   },
   extraReducers: {

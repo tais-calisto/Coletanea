@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { IconUserCircle, IconChevronDown } from '@tabler/icons'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { logoutUser } from '../user/userSlice'
+import { logoutUser } from '../../features/user/userSlice'
 
 const UserIcon = () => {
   const dispach = useDispatch()

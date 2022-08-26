@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyleNavbar } from '../styles/Navbar.styled'
+import { StyleNavbar } from '../../styles/Navbar.styled'
 import NavLinks from './NavLinks'
 import { IconUserCircle } from '@tabler/icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { logoutUser } from '../user/userSlice'
+import { logoutUser } from '../../features/user/userSlice'
 
 const Navbar = () => {
   const dispach = useDispatch()
