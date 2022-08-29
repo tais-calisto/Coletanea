@@ -13,7 +13,8 @@ export const StyledHeader = styled.header`
   align-items: center;
   justify-items: center;
   border-bottom: solid 1px ${({ theme }) => theme.colors.lightPink};
-
+  background-color: ${({ theme }) => theme.colors.white};
+  z-index: 1;
   div,
   form {
     width: 100%;

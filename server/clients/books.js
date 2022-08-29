@@ -6,7 +6,12 @@ dotenv.config()
 const fetchBook = async (query) => {
   const bookURL = 'https://www.googleapis.com/books/v1/volumes?q='
   const apiKey = `&key=${process.env.BOOKS_API_KEY}`
-  const { data } = await axios.get(`${bookURL}${query}${apiKey}`)
+  const maxResults = `&maxResults=40`
+  const printType = `&printType=books`
+
+  const { data } = await axios.get(
+    `${bookURL}${query}${maxResults}${printType}${apiKey}`
+  )
 
   const books = data.items
 
