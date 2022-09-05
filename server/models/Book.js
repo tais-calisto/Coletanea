@@ -28,4 +28,4 @@ const BookSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-module.exports = mongoose.model('Book', BookSchema)
+export default mongoose.model('Book', BookSchema)
