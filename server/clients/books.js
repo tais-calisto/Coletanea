@@ -27,9 +27,10 @@ const fetchBook = async (query) => {
         authors,
         description,
         imageLinks: { thumbnail: cover },
+        pageCount: pages,
       },
     } = book
-    return { id, title, authors, description, cover }
+    return { id, title, authors, description, cover, pages }
   })
 
   return info

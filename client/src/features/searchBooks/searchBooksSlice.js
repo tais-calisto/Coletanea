@@ -19,7 +19,7 @@ export const searchBook = createAsyncThunk(
       })
       return response.data
     } catch (error) {
-      return
+      console.log(error)
     }
   }
 )

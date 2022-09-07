@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const BookSchema = new mongoose.Schema(
   {
-    author: {
+    authors: {
       type: Array,
       required: [true],
     },

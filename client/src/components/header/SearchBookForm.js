@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { IconSearch } from '@tabler/icons'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { searchBook } from '../../features/searchBooks/searchBooksSlice'
 
 const SearchBookForm = () => {
