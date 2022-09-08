@@ -6,6 +6,7 @@ import notFoundMiddleware from './middleware/notFound.js'
 import errorHandlerMiddleware from './middleware/errorHandler.js'
 import booksRouter from './routes/books.js'
 import authRouter from './routes/authentication.js'
+import goalRouter from './routes/goals.js'
 import authentication from './middleware/authentication.js'
 import cors from 'cors'
 
@@ -17,6 +18,7 @@ app.use(cors())
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/books', authentication, booksRouter)
+app.use('/api/v1/goals', authentication, goalRouter)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
