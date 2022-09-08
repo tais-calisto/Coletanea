@@ -9,6 +9,9 @@ import ProtectedRoute from './pages/ProtectedRoute'
 import BookShelf from './pages/bookShelf/bookShelf'
 import SearchResults from './components/searchResults/searchResults'
 import Goals from './pages/goals/Goals'
+import Readed from './pages/status/Readed'
+import Reading from './pages/status/Reading'
+import ToRead from './pages/status/ToRead'
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
             <Route index element={<BookShelf />} />
             <Route path='search' element={<SearchResults />} />
             <Route path='goals' element={<Goals />} />
+            <Route path='readed' element={<Readed />} />
+            <Route path='reading' element={<Reading />} />
+            <Route path='toread' element={<ToRead />} />
           </Route>
           <Route path='landing' element={<Landing />} />
           <Route path='register' element={<Register />} />

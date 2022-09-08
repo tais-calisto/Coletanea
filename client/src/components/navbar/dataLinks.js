@@ -2,7 +2,7 @@ import {
   IconBooks,
   IconBookmarks,
   IconDiscountCheck,
-  IconBookOff,
+  IconBook2,
   IconBook,
 } from '@tabler/icons'
 
@@ -28,8 +28,8 @@ export const data = [
     link: 'reading',
   },
   {
-    icon: <IconBookOff />,
-    name: 'Parei de ler',
-    link: 'stopped',
+    icon: <IconBook2 />,
+    name: 'Quero ler',
+    link: 'toread',
   },
 ]
