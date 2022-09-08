@@ -10,6 +10,10 @@ const BookSchema = new mongoose.Schema(
       type: String,
       required: [true],
     },
+    cover: {
+      type: String,
+      required: [true],
+    },
     pages: {
       type: Number,
       required: [true],

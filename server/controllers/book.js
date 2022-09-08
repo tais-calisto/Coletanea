@@ -8,4 +8,11 @@ const addBook = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ book })
 }
 
-export { addBook }
+const getAllBooks = async (req, res) => {
+  const books = await Book.find({ createdBy: req.user.userId }).sort(
+    'createdAt'
+  )
+  res.status(StatusCodes.OK).json({ books })
+}
+
+export { addBook, getAllBooks }

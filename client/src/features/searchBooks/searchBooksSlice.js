@@ -34,10 +34,12 @@ const seachBook = createSlice({
     },
     [searchBook.fulfilled]: (state, { payload }) => {
       state.isLoading = false
+
       state.booksList = [payload]
     },
     [searchBook.rejected]: (state, { payload }) => {
       state.isLoading = false
+
       toast.error(`${payload}`, {
         position: toast.POSITION.TOP_CENTER,
       })
