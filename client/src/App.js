@@ -6,6 +6,8 @@ import { AppShell, Error, Register, Landing } from './pages'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ProtectedRoute from './pages/ProtectedRoute'
+import BookShelf from './components/bookShelf/bookShelf'
+import SearchResults from './components/searchResults/searchResults'
 
 function App() {
   return (
@@ -21,7 +23,10 @@ function App() {
                 <AppShell />
               </ProtectedRoute>
             }
-          />
+          >
+            <Route index element={<BookShelf />} />
+            <Route path='search' element={<SearchResults />} />
+          </Route>
           <Route path='landing' element={<Landing />} />
           <Route path='register' element={<Register />} />
           <Route path='*' element={<Error />} />

@@ -3,6 +3,7 @@ import { IconSearch } from '@tabler/icons'
 import { useDispatch } from 'react-redux'
 import { searchBook } from '../../features/searchBooks/searchBooksSlice'
 import { showSearch } from '../../features/appShell/appShellSlice'
+import { Link } from 'react-router-dom'
 
 const SearchBookForm = () => {
   const search = useRef(null)
@@ -19,7 +20,9 @@ const SearchBookForm = () => {
     <form onSubmit={handleSubmit}>
       <input type='text' placeholder='Pesquise um livro' ref={search} />
       <button>
-        <IconSearch size={18} />
+        <Link to='search'>
+          <IconSearch size={18} />
+        </Link>
       </button>
     </form>
   )
