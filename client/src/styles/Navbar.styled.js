@@ -39,17 +39,17 @@ export const StyleNavbar = styled.nav`
     list-style: none;
     display: flex;
     justify-content: center;
-    a {
-      p {
-        display: flex;
-        align-items: center;
-        i {
-          padding-right: 0.2rem;
-        }
+    cursor: pointer;
+
+    p {
+      display: flex;
+      align-items: center;
+      i {
+        padding-right: 0.2rem;
       }
-      text-decoration: none;
-      color: ${({ theme }) => theme.colors.black};
     }
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.black};
   }
 
   .desktop {

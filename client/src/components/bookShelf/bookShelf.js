@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { StyleSearchResults } from '../../styles/SearchResults.styles'
 import { getAllBooks } from '../../features/allBooks/allBooksSlice'
 import { useSelector, useDispatch } from 'react-redux'
@@ -9,7 +9,7 @@ const BookShelf = () => {
 
   useMemo(async () => {
     await dispatch(getAllBooks())
-  }, [])
+  }, [dispatch])
 
   const results = useSelector((store) => store.allBooks)
   const { allBooks } = results

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { StyledRegister } from '../styles/Register.styled'
-import FormRow from '../components/navbar/FormRow'
+import FormRow from '../components/registerFormRow/FormRow'
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
 import { loginUser, registerUser } from '../features/user/userSlice'

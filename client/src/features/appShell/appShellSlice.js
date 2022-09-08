@@ -17,5 +17,5 @@ const appShell = createSlice({
   },
 })
 
-export const { showSearch } = appShell.actions
+export const { showSearch, showShelf } = appShell.actions
 export default appShell.reducer

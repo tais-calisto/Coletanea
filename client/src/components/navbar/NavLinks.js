@@ -1,19 +1,26 @@
 import React from 'react'
-import { IconBooks } from '@tabler/icons'
+import { data } from './dataLinks'
+import { useDispatch } from 'react-redux'
 
 const NavLinks = () => {
+  const dispatch = useDispatch()
   return (
     <ul>
-      <li>
-        <a href='/'>
-          <p>
-            <i>
-              <IconBooks />
-            </i>
-            Estante
-          </p>
-        </a>
-      </li>
+      {data.map((link, index) => {
+        return (
+          <li
+            key={index}
+            onClick={() => {
+              dispatch(link.handleClick)
+            }}
+          >
+            <p>
+              <i>{link.icon}</i>
+              {link.name}
+            </p>
+          </li>
+        )
+      })}
     </ul>
   )
 }
