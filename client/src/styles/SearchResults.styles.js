@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyleSearchResults = styled.ul`
+export const StyleShowBooks = styled.ul`
   overflow: scroll;
 
   position: relative;
@@ -19,7 +19,7 @@ export const StyleSearchResults = styled.ul`
 
   li {
     list-style: none;
-    border: 2px solid ${({ theme }) => theme.colors.lightPink};
+    border: 1px solid ${({ theme }) => theme.colors.lightPink};
     border-radius: 10px;
     transition: all 0.2s ease-in-out;
     &:hover {

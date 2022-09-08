@@ -6,7 +6,7 @@ import { AppShell, Error, Register, Landing } from './pages'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ProtectedRoute from './pages/ProtectedRoute'
-import BookShelf from './components/bookShelf/bookShelf'
+import BookShelf from './pages/bookShelf/bookShelf'
 import SearchResults from './components/searchResults/searchResults'
 
 function App() {

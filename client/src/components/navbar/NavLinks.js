@@ -8,7 +8,6 @@ const NavLinks = () => {
   return (
     <ul>
       {data.map((link, index) => {
-        console.log(link)
         return (
           <Link to={link.link} key={index}>
             <p>

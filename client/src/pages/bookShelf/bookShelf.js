@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { StyleSearchResults } from '../../styles/SearchResults.styles'
+import { StyleShowBooks } from '../../styles/SearchResults.styles'
 import { getAllBooks } from '../../features/allBooks/allBooksSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import Book from './book'
@@ -15,11 +15,11 @@ const BookShelf = () => {
   const { allBooks } = results
 
   return (
-    <StyleSearchResults>
+    <StyleShowBooks>
       {allBooks.map((book) => {
         return <Book key={book._id} {...book} />
       })}
-    </StyleSearchResults>
+    </StyleShowBooks>
   )
 }
 
