@@ -32,7 +32,7 @@ export const getGoals = createAsyncThunk(
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
       })
-      return response.goal
+      return response.data
     } catch (error) {
       console.log(error)
     }
