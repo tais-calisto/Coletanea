@@ -3,14 +3,15 @@ import customFetch from '../../utils/customFetch'
 
 const initialState = {
   isLoading: false,
-  readingBooks: [],
+  books: [],
 }
 
-export const getAllReadingBooks = createAsyncThunk(
-  'readingbooks/get',
-  async (book, thunkAPI) => {
+export const getBooksByStatus = createAsyncThunk(
+  'booksbystatus/get',
+  async (status, thunkAPI) => {
     try {
-      const response = await customFetch('/books/reading-books', {
+      const response = await customFetch('/books/status', {
+        params: { status: status },
         headers: {
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
@@ -22,23 +23,23 @@ export const getAllReadingBooks = createAsyncThunk(
   }
 )
 
-const readingBooks = createSlice({
-  name: 'reading books',
+const booksByStatusSlice = createSlice({
+  name: 'all books',
   initialState,
   reducers: {},
   extraReducers: {
-    [getAllReadingBooks.pending]: (state) => {
+    [getBooksByStatus.pending]: (state) => {
       state.isLoading = true
     },
-    [getAllReadingBooks.fulfilled]: (state, { payload }) => {
+    [getBooksByStatus.fulfilled]: (state, { payload }) => {
       const { books } = payload
       state.isLoading = false
-      state.readingBooks = books
+      state.books = books
     },
-    [getAllReadingBooks.pending]: (state) => {
+    [getBooksByStatus.pending]: (state) => {
       state.isLoading = false
     },
   },
 })
 
-export default readingBooks.reducer
+export default booksByStatusSlice.reducer

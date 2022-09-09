@@ -39,4 +39,20 @@ const getToReadBooks = async (req, res) => {
   res.status(StatusCodes.OK).json({ books })
 }
 
-export { addBook, getAllBooks, getReadedBooks, getReadingBooks, getToReadBooks }
+const getBooksByStatus = async (req, res) => {
+  const status = req.query.status
+  const books = await Book.find({
+    createdBy: req.user.userId,
+    status: status,
+  }).sort('createdAt')
+  res.status(StatusCodes.OK).json({ books })
+}
+
+export {
+  addBook,
+  getAllBooks,
+  getReadedBooks,
+  getReadingBooks,
+  getToReadBooks,
+  getBooksByStatus,
+}

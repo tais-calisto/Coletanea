@@ -1,22 +1,22 @@
 import React, { useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { StyleShowBooks } from '../../styles/SearchResults.styles'
-import { getAllReadingBooks } from '../../features/allBooks/readingBooksSlice'
+import { getBooksByStatus } from '../../features/allBooks/booksByStatusSlice'
 import Book from '../bookShelf/book'
 
 const Reading = () => {
   const dispatch = useDispatch()
 
   useMemo(async () => {
-    await dispatch(getAllReadingBooks())
+    await dispatch(getBooksByStatus('lendo'))
   }, [dispatch])
 
-  const results = useSelector((store) => store.readingBooks)
-  const { readingBooks } = results
+  const results = useSelector((store) => store.booksByStatus)
+  const { books } = results
 
   return (
     <StyleShowBooks>
-      {readingBooks.map((book) => {
+      {books.map((book) => {
         return <Book key={book._id} {...book} />
       })}
     </StyleShowBooks>
