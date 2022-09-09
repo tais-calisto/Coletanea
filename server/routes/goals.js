@@ -1,8 +1,8 @@
 import express from 'express'
-import { defineGoal } from '../controllers/goals.js'
+import { defineGoal, getGoals } from '../controllers/goals.js'
 
 const router = express.Router()
 
-router.route('/').post(defineGoal)
+router.route('/').post(defineGoal).get(getGoals)
 
 export default router

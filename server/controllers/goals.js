@@ -7,4 +7,11 @@ const defineGoal = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ goal })
 }
 
-export { defineGoal }
+const getGoals = async (req, res) => {
+  const goals = await Goals.find({ createdBy: req.user.userId }).sort(
+    'createdAt'
+  )
+  res.status(StatusCodes.OK).json({ goals })
+}
+
+export { defineGoal, getGoals }
