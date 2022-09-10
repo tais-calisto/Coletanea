@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getGoals } from '../../features/goals/goalsSlice'
+import { StyleGoals } from '../../styles/ShowGoals.styled'
 
 const AllGoals = () => {
   const dispatch = useDispatch()
@@ -11,16 +12,20 @@ const AllGoals = () => {
   const { goals } = useSelector((store) => store.goals)
 
   return (
-    <>
-      {goals.map((goal) => {
-        return (
-          <p key={goal._id}>
-            {goal.books}
-            {goal.period}
-          </p>
-        )
-      })}
-    </>
+    <StyleGoals>
+      <h4>Metas Definidas:</h4>
+      <ul>
+        {goals.map((goal) => {
+          return (
+            <li key={goal._id}>
+              <p>
+                Ler {goal.books} livros por {goal.period}
+              </p>
+            </li>
+          )
+        })}
+      </ul>
+    </StyleGoals>
   )
 }
 
