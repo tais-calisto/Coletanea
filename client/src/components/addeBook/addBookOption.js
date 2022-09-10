@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { addBook } from '../../features/singleBook/bookSlice'
+import { StyleBookOptions } from '../../styles/BookOptions.styled'
 
 const AddBookOption = (props) => {
   const status = useRef(null)

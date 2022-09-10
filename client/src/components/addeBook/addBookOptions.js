@@ -1,11 +1,12 @@
 import React from 'react'
 import data from '../../utils/addBooksOptions.json'
 import AddBookOption from './addBookOption'
+import { StyleBookOptions } from '../../styles/BookOptions.styled'
 
 const AddBookOptions = (bookInfo) => {
   const { options } = data
   return (
-    <div>
+    <StyleBookOptions>
       {options.map((option, index) => {
         return (
           <div key={index}>
@@ -13,7 +14,7 @@ const AddBookOptions = (bookInfo) => {
           </div>
         )
       })}
-    </div>
+    </StyleBookOptions>
   )
 }
 

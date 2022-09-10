@@ -5,6 +5,8 @@ import AddBookOptions from '../addeBook/addBookOptions'
 const SearchResult = (book) => {
   const [showOptions, setShowOptions] = useState(false)
 
+  console.log(book)
+
   const handleAddBtn = () => {
     setShowOptions(!showOptions)
   }
@@ -12,11 +14,19 @@ const SearchResult = (book) => {
   return (
     <>
       <li>
-        <h4>{book.title}</h4>
         <img src={book.cover} alt={book.title} />
-        <button onClick={handleAddBtn}>
-          <IconCirclePlus />
+        <h4>{book.title}</h4>
+        <div className='authors'>
+          {book.authors &&
+            book.authors.map((author, index) => {
+              return <p key={index}>{author}</p>
+            })}
+        </div>
+
+        <button className='addButton' onClick={handleAddBtn}>
+          <IconCirclePlus /> Adicionar à estante
         </button>
+
         {showOptions && <AddBookOptions bookInfo={book} />}
       </li>
     </>
