@@ -34,12 +34,14 @@ export const StyleNavbar = styled.nav`
     }
   }
 
-  li {
+  a {
     padding-top: 1rem;
     list-style: none;
     display: flex;
-    justify-content: center;
     cursor: pointer;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.darkPink};
+    transition: 0.2s all ease-in-out;
 
     p {
       display: flex;
@@ -48,8 +50,13 @@ export const StyleNavbar = styled.nav`
         padding-right: 0.2rem;
       }
     }
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.black};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.lightPink};
+    }
+  }
+  .active {
+    background-color: ${({ theme }) => theme.colors.lightPink};
   }
 
   .desktop {
