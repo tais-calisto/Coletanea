@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { StyleShowBooks } from '../../styles/SearchResults.styles'
+import { StyleShowBooks } from '../../styles/ShowBooks.styled'
 import { getAllBooks } from '../../features/allBooks/allBooksSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import Book from './book'

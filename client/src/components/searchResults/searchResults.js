@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import SearchResult from './searchResult'
-import { StyleShowBooks } from '../../styles/SearchResults.styles'
+import { StyleShowBooks } from '../../styles/ShowBooks.styled'
 
 const SearchResults = () => {
   const results = useSelector((store) => store.searchBook)

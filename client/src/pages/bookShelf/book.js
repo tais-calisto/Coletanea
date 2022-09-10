@@ -1,14 +1,20 @@
 import React from 'react'
-import { IconPencil } from '@tabler/icons'
+import { IconPencil, IconTrash } from '@tabler/icons'
 
 const Book = (book) => {
+  // console.log(book)
   return (
     <li>
       <img src={book.cover} alt=''></img>
       <p>{book.title}</p>
-      <button>
-        <IconPencil />
-      </button>
+      <div>
+        <button>
+          <IconPencil />
+        </button>
+        <button>
+          <IconTrash />
+        </button>
+      </div>
     </li>
   )
 }

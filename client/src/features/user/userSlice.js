@@ -56,7 +56,7 @@ const userSlice = createSlice({
     [registerUser.fulfilled]: (state, { payload }) => {
       const { user } = payload
       state.isLoading = false
-      state.user = { user }
+      state.user = { ...user }
       addUserToLS(user)
     },
     [registerUser.rejected]: (state, { payload }) => {
@@ -71,7 +71,7 @@ const userSlice = createSlice({
     [loginUser.fulfilled]: (state, { payload }) => {
       const { user } = payload
       state.isLoading = false
-      state.user = { user }
+      state.user = { ...user }
       addUserToLS(user)
     },
     [loginUser.rejected]: (state, { payload }) => {

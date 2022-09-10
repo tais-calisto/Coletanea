@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { StyleShowBooks } from '../../styles/SearchResults.styles'
+import { StyleShowBooks } from '../../styles/ShowBooks.styled'
 import Book from '../bookShelf/book'
 import { getBooksByStatus } from '../../features/allBooks/booksByStatusSlice'
 

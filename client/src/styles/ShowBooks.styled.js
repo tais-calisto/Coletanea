@@ -1,21 +1,11 @@
 import styled from 'styled-components'
 
 export const StyleShowBooks = styled.ul`
-  overflow: scroll;
-
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  height: fit-content;
-  display: block;
-  top: 18vh;
-
   padding: 2rem;
   display: grid;
   grid-template-columns: 1fr;
-
+  gap: 2rem;
   text-align: center;
-  scroll-behavior: smooth;
 
   li {
     list-style: none;
@@ -42,10 +32,6 @@ export const StyleShowBooks = styled.ul`
   }
 
   @media screen and (min-width: 1024px) {
-    width: 80%;
-    margin: 0 0 0 250px;
-    overflow: hidden;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
   }
 `
