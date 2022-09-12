@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { StyleShowBooks } from '../../styles/ShowBooks.styled'
 import Book from '../bookShelf/book'
@@ -7,12 +7,15 @@ import { getBooksByStatus } from '../../features/allBooks/booksByStatusSlice'
 const Readed = () => {
   const dispatch = useDispatch()
 
-  useMemo(async () => {
-    await dispatch(getBooksByStatus('lido'))
-  }, [dispatch])
-
   const results = useSelector((store) => store.booksByStatus)
   const { books } = results
+
+  useEffect(() => {
+    async function getBooks() {
+      await dispatch(getBooksByStatus('lido'))
+    }
+    getBooks()
+  }, [dispatch, books])
 
   return (
     <StyleShowBooks>

@@ -32,8 +32,8 @@ const updateBook = async (req, res) => {
   } = req
 
   const book = await Book.findOneAndUpdate(
-    { id: bookId, createdBy: userId },
-    status,
+    { _id: bookId, createdBy: userId },
+    { status: status },
     { new: true, runValidators: true }
   )
 

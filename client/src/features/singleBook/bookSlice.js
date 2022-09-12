@@ -27,6 +27,25 @@ export const addBook = createAsyncThunk(
   }
 )
 
+export const updateBook = createAsyncThunk(
+  'uptade/book',
+  async (update, thunkAPI) => {
+    console.log(update)
+    try {
+      const response = await customFetch.patch(
+        `/books/${update.book}`,
+        { status: update.status },
+        {
+          headers: {
+            authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+          },
+        }
+      )
+      return response.data
+    } catch (error) {}
+  }
+)
+
 const bookSlice = createSlice({
   name: 'book',
   initialState,
@@ -42,6 +61,17 @@ const bookSlice = createSlice({
     [addBook.rejected]: (state, { payload }) => {
       state.isLoading = false
       toast.error(payload)
+    },
+    [updateBook.pending]: (state) => {
+      state.isLoading = true
+    },
+    [updateBook.fulfilled]: (state) => {
+      state.isLoading = false
+      toast.success('Atualizado com sucesso')
+    },
+    [updateBook.rejected]: (state) => {
+      state.isLoading = false
+      toast.error('Algo deu errado')
     },
   },
 })
