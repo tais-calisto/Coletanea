@@ -5,8 +5,6 @@ import AddBookOptions from '../addeBook/addBookOptions'
 const SearchResult = (book) => {
   const [showOptions, setShowOptions] = useState(false)
 
-  console.log(book)
-
   const handleAddBtn = () => {
     setShowOptions(!showOptions)
   }
@@ -27,7 +25,8 @@ const SearchResult = (book) => {
           <IconCirclePlus /> Adicionar à estante
         </button>
 
-        {showOptions && <AddBookOptions bookInfo={book} />}
+        {/* {showOptions && <AddBookOptions bookInfo={book} />} */}
+        {showOptions && <AddBookOptions {...book} />}
       </li>
     </>
   )

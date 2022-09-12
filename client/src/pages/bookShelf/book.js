@@ -40,6 +40,7 @@ const Book = (book) => {
           <IconTrash />
         </button>
       </div>
+      {edit && <AddBookOptions {...book} />}
     </li>
   )
 }
