@@ -30,7 +30,6 @@ export const addBook = createAsyncThunk(
 export const updateBook = createAsyncThunk(
   'uptade/book',
   async (update, thunkAPI) => {
-    console.log(update)
     try {
       const response = await customFetch.patch(
         `/books/${update.book}`,
@@ -41,6 +40,21 @@ export const updateBook = createAsyncThunk(
           },
         }
       )
+      return response.data
+    } catch (error) {}
+  }
+)
+
+export const deleteBook = createAsyncThunk(
+  'delete/book',
+  async (book, thunkAPI) => {
+    console.log(book)
+    try {
+      const response = await customFetch.delete(`/books/${book}`, {
+        headers: {
+          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        },
+      })
       return response.data
     } catch (error) {}
   }
@@ -70,6 +84,17 @@ const bookSlice = createSlice({
       toast.success('Atualizado com sucesso')
     },
     [updateBook.rejected]: (state) => {
+      state.isLoading = false
+      toast.error('Algo deu errado')
+    },
+    [deleteBook.pending]: (state) => {
+      state.isLoading = true
+    },
+    [deleteBook.fulfilled]: (state) => {
+      state.isLoading = false
+      toast.success('Livro retirado da estante')
+    },
+    [deleteBook.rejected]: (state) => {
       state.isLoading = false
       toast.error('Algo deu errado')
     },
