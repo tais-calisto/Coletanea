@@ -50,7 +50,7 @@ const deleteBook = async (req, res) => {
     params: { id: bookId },
   } = req
 
-  const book = await Book.findOneAndDelete({ id: bookId, createdBy: userId })
+  const book = await Book.findOneAndDelete({ _id: bookId, createdBy: userId })
 
   if (!book) {
     throw new NotFoundError('Livro não encontrado')
