@@ -24,4 +24,39 @@ const getBooksByStatus = async (req, res) => {
   res.status(StatusCodes.OK).json({ books })
 }
 
-export { addBook, getAllBooks, getBooksByStatus }
+const updateBook = async (req, res) => {
+  const {
+    body: { status },
+    user: { userId },
+    params: { id: bookId },
+  } = req
+
+  const book = await Book.findOneAndUpdate(
+    { id: bookId, createdBy: userId },
+    status,
+    { new: true, runValidators: true }
+  )
+
+  if (!book) {
+    throw new NotFoundError('Livro não encontrado')
+  }
+
+  res.status(StatusCodes.OK).json({ book })
+}
+
+const deleteBook = async (req, res) => {
+  const {
+    user: { userId },
+    params: { id: bookId },
+  } = req
+
+  const book = await Book.findOneAndDelete({ id: bookId, createdBy: userId })
+
+  if (!book) {
+    throw new NotFoundError('Livro não encontrado')
+  }
+
+  res.status(StatusCodes.OK).send()
+}
+
+export { addBook, getAllBooks, getBooksByStatus, updateBook, deleteBook }
