@@ -6,7 +6,7 @@ import { StyleGoalForm } from '../../styles/GoalFrom.styled'
 const GoalForm = () => {
   const dispatch = useDispatch()
   const books = useRef(null)
-  const [period, setPeriod] = useState('ano')
+  const [period, setPeriod] = useState('year')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -34,9 +34,9 @@ const GoalForm = () => {
         ></input>
         <label htmlFor='period'> por: </label>
         <select id='period' onChange={handleChange}>
-          <option value={'ano'}>ano</option>
-          <option value={'mês'}>mês</option>
-          <option value={'semana'}>semana</option>
+          <option value={'year'}>ano</option>
+          <option value={'month'}>mês</option>
+          <option value={'week'}>semana</option>
         </select>
         <br />
         <button>Definir meta</button>

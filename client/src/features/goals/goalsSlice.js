@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 const initialState = {
   isLoading: false,
   goals: [],
+  booksByGoal: [],
 }
 
 export const createGoal = createAsyncThunk(
@@ -23,15 +24,30 @@ export const createGoal = createAsyncThunk(
   }
 )
 
-export const getGoals = createAsyncThunk(
-  'create/goal',
-  async (goal, thunkAPI) => {
+export const getGoals = createAsyncThunk('get/goal', async (goal, thunkAPI) => {
+  try {
+    const response = await customFetch.get(`/goals`, {
+      headers: {
+        authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+      },
+    })
+    return response.data
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+export const getBooksByGoals = createAsyncThunk(
+  'getbooks/goal',
+  async (time, thunkAPI) => {
     try {
-      const response = await customFetch.get(`/goals`, {
+      const response = await customFetch.get(`/goals/books`, {
+        params: { startDate: time.startDate, period: time.period },
         headers: {
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
       })
+      console.log(response.data)
       return response.data
     } catch (error) {
       console.log(error)
@@ -64,6 +80,17 @@ const goalsSlice = createSlice({
       state.goals = goals
     },
     [getGoals.rejected]: (state, { payload }) => {
+      state.isLoading = false
+    },
+    [getBooksByGoals.pending]: (state) => {
+      state.isLoading = true
+    },
+    [getBooksByGoals.fulfilled]: (state, { payload }) => {
+      const { books } = payload
+      state.isLoading = false
+      state.books = books
+    },
+    [getBooksByGoals.rejected]: (state, { payload }) => {
       state.isLoading = false
     },
   },

@@ -7,7 +7,7 @@ const GoalsSchema = new mongoose.Schema(
     },
     period: {
       type: String,
-      enum: ['mês', 'ano', 'semana'],
+      enum: ['month', 'year', 'week'],
       default: 'ano',
       require: [true],
     },
