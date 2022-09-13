@@ -17,21 +17,21 @@ const getGoals = async (req, res) => {
 }
 
 const getBooksByGoals = async (req, res) => {
-  const startDate = req.query.startDate
   const period = req.query.period
+  const date = DateTime.now().toUTC().toString()
   let endDate
   if (period === 'week') {
-    endDate = DateTime.fromISO(startDate).plus({ weeks: 1 }).toString()
+    endDate = DateTime.fromISO(date).minus({ weeks: 1 }).toUTC().toString()
   } else if (period === 'month') {
-    endDate = DateTime.fromISO(startDate).plus({ months: 1 }).toString()
+    endDate = DateTime.fromISO(date).plus({ months: 1 }).toUTC().toString()
   } else {
-    endDate = DateTime.fromISO(startDate).plus({ years: 1 }).toString()
+    endDate = DateTime.fromISO(date).plus({ years: 1 }).toUTC().toString()
   }
 
   const books = await Book.find({
     status: 'lido',
     createdBy: req.user.userId,
-    createdAt: { $gt: startDate, $lt: endDate },
+    createdAt: { $gt: endDate, $lt: date },
   }).sort('createdAt')
   res.status(StatusCodes.OK).json({ books })
 }
