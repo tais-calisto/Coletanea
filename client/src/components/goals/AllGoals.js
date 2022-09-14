@@ -1,40 +1,23 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getGoals } from '../../features/goals/goalsSlice'
+import { getGoals, getBooksByGoals } from '../../features/goals/goalsSlice'
 import { StyleGoals } from '../../styles/ShowGoals.styled'
-import BooksByGoals from './BooksByGoals'
+import BooksByGoals from './GoalStatus'
 
-const AllGoals = () => {
-  const dispatch = useDispatch()
-  useMemo(async () => {
-    await dispatch(getGoals())
-  }, [dispatch])
-
-  const { goals } = useSelector((store) => store.goals)
-
+const AllGoals = (goal) => {
   return (
-    <StyleGoals>
-      <h4>Metas Definidas:</h4>
-      <ul>
-        {goals.map((goal, index) => {
-          return (
-            <>
-              <li key={goal._id}>
-                <p>
-                  Ler {goal.books} livros por{' '}
-                  {goal.period === 'year'
-                    ? 'ano'
-                    : goal.period === 'month'
-                    ? 'mês'
-                    : 'semana'}
-                </p>
-              </li>
-              <BooksByGoals key={index} goal={goal} />
-            </>
-          )
-        })}
-      </ul>
-    </StyleGoals>
+    <li>
+      <p>
+        Ler {goal.books} livros por{' '}
+        {goal.period === 'year'
+          ? 'ano'
+          : goal.period === 'month'
+          ? 'mês'
+          : 'semana'}
+      </p>
+
+      <BooksByGoals books={goal.completed} />
+    </li>
   )
 }
 

@@ -16,6 +16,9 @@ const GoalsSchema = new mongoose.Schema(
       ref: 'User',
       require: [true],
     },
+    completed: {
+      type: Array,
+    },
   },
   { timestamps: true }
 )

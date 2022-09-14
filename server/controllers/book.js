@@ -1,10 +1,21 @@
 import Book from '../models/Book.js'
+import Goals from '../models/Goals.js'
 import { StatusCodes } from 'http-status-codes'
 import { BadRequest, NotFoundError } from '../errors/index.js'
 
 const addBook = async (req, res) => {
   req.body.createdBy = req.user.userId
   const book = await Book.create(req.body)
+
+  if (book.status === 'lido') {
+    const book = req.body
+    console.log(req.body.title)
+    await Goals.updateMany(
+      { createdBy: req.user.userId },
+      { $push: { completed: book } }
+    )
+  }
+
   res.status(StatusCodes.CREATED).json({ book })
 }
 

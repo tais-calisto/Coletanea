@@ -24,8 +24,6 @@ const SearchResult = (book) => {
         <button className='addButton' onClick={handleAddBtn}>
           <IconCirclePlus /> Adicionar à estante
         </button>
-
-        {/* {showOptions && <AddBookOptions bookInfo={book} />} */}
         {showOptions && <AddBookOptions {...book} />}
       </li>
     </>

@@ -47,7 +47,6 @@ export const getBooksByGoals = createAsyncThunk(
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
       })
-      console.log(response.data)
       return response.data
     } catch (error) {
       console.log(error)
@@ -79,7 +78,7 @@ const goalsSlice = createSlice({
       state.isLoading = false
       state.goals = goals
     },
-    [getGoals.rejected]: (state, { payload }) => {
+    [getGoals.rejected]: (state) => {
       state.isLoading = false
     },
     [getBooksByGoals.pending]: (state) => {
@@ -88,9 +87,9 @@ const goalsSlice = createSlice({
     [getBooksByGoals.fulfilled]: (state, { payload }) => {
       const { books } = payload
       state.isLoading = false
-      state.books = books
+      state.booksByGoal = books
     },
-    [getBooksByGoals.rejected]: (state, { payload }) => {
+    [getBooksByGoals.rejected]: (state) => {
       state.isLoading = false
     },
   },
