@@ -48,7 +48,6 @@ export const updateBook = createAsyncThunk(
 export const deleteBook = createAsyncThunk(
   'delete/book',
   async (book, thunkAPI) => {
-    console.log(book)
     try {
       const response = await customFetch.delete(`/books/${book}`, {
         headers: {

@@ -4,16 +4,15 @@ import BooksByGoals from './GoalStatus'
 const AllGoals = (goal) => {
   return (
     <li>
-      <p>
+      <h5>
         Ler {goal.books} livros por{' '}
         {goal.period === 'year'
           ? 'ano'
           : goal.period === 'month'
           ? 'mês'
           : 'semana'}
-      </p>
-
-      <BooksByGoals books={goal.completed} />
+      </h5>
+      <BooksByGoals books={goal.completed} goal={goal.books} />
     </li>
   )
 }
