@@ -8,8 +8,6 @@ const addBook = async (req, res) => {
   const book = await Book.create(req.body)
 
   if (book.status === 'lido') {
-    const book = req.body
-    console.log(req.body.title)
     await Goals.updateMany(
       { createdBy: req.user.userId },
       { $push: { completed: book } }
@@ -52,6 +50,18 @@ const updateBook = async (req, res) => {
     throw new NotFoundError('Livro não encontrado')
   }
 
+  if (book.status === 'lido') {
+    await Goals.updateMany(
+      { createdBy: userId },
+      { $push: { completed: book } }
+    )
+  } else {
+    await Goals.updateMany(
+      { createdBy: userId },
+      { $pull: { completed: { cover: book.cover } } }
+    )
+  }
+
   res.status(StatusCodes.OK).json({ book })
 }
 
@@ -65,6 +75,11 @@ const deleteBook = async (req, res) => {
 
   if (!book) {
     throw new NotFoundError('Livro não encontrado')
+  } else {
+    await Goals.updateMany(
+      { createdBy: userId },
+      { $pull: { completed: book } }
+    )
   }
 
   res.status(StatusCodes.OK).send()
