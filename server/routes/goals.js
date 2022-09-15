@@ -1,9 +1,9 @@
 import express from 'express'
-import { defineGoal, getGoals, getBooksByGoals } from '../controllers/goals.js'
+import { defineGoal, getGoals, deleteGoal } from '../controllers/goals.js'
 
 const router = express.Router()
 
 router.route('/').post(defineGoal).get(getGoals)
-router.route('/books').get(getBooksByGoals)
+router.route('/:id').delete(deleteGoal)
 
 export default router

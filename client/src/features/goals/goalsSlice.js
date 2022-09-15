@@ -37,12 +37,11 @@ export const getGoals = createAsyncThunk('get/goal', async (goal, thunkAPI) => {
   }
 })
 
-export const getBooksByGoals = createAsyncThunk(
-  'getbooks/goal',
-  async (time, thunkAPI) => {
+export const deleteGoal = createAsyncThunk(
+  'delete/goal',
+  async (goal, thunkAPI) => {
     try {
-      const response = await customFetch.get(`/goals/books`, {
-        params: { startDate: time.startDate, period: time.period },
+      const response = await customFetch.delete(`/goals/${goal}`, {
         headers: {
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
@@ -81,16 +80,16 @@ const goalsSlice = createSlice({
     [getGoals.rejected]: (state) => {
       state.isLoading = false
     },
-    [getBooksByGoals.pending]: (state) => {
+    [deleteGoal.pending]: (state) => {
       state.isLoading = true
     },
-    [getBooksByGoals.fulfilled]: (state, { payload }) => {
-      const { books } = payload
+    [deleteGoal.fulfilled]: (state) => {
       state.isLoading = false
-      state.booksByGoal = books
+      toast.success('Livro retirado da estante')
     },
-    [getBooksByGoals.rejected]: (state) => {
+    [deleteGoal.rejected]: (state) => {
       state.isLoading = false
+      toast.error('Algo deu errado')
     },
   },
 })
