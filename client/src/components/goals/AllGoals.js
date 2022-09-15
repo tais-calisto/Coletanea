@@ -1,5 +1,5 @@
 import React from 'react'
-import BooksByGoals from './GoalStatus'
+import GoalStatus from './GoalStatus'
 import { IconTrash } from '@tabler/icons'
 import { deleteGoal } from '../../features/goals/goalsSlice'
 import { useDispatch } from 'react-redux'
@@ -14,18 +14,20 @@ const AllGoals = (goal) => {
 
   return (
     <li>
-      <h5>
-        Ler {goal.books} livros por{' '}
-        {goal.period === 'year'
-          ? 'ano'
-          : goal.period === 'month'
-          ? 'mês'
-          : 'semana'}
-      </h5>
-      <button onClick={handleDelete}>
-        <IconTrash />
-      </button>
-      <BooksByGoals books={goal.completed} goal={goal.books} />
+      <header>
+        <h5>
+          Ler {goal.books} livros por{' '}
+          {goal.period === 'year'
+            ? 'ano'
+            : goal.period === 'month'
+            ? 'mês'
+            : 'semana'}
+        </h5>
+        <button onClick={handleDelete}>
+          <IconTrash />
+        </button>
+      </header>
+      <GoalStatus books={goal.completed} goal={goal.books} />
     </li>
   )
 }

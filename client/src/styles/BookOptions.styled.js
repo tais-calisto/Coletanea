@@ -6,15 +6,17 @@ export const StyleBookOptions = styled.ul`
   overflow: hidden;
   button {
     padding-top: 0.5rem;
-    background-color: transparent;
-    border: none;
+    background: transparent;
+    border: 1px solid ${({ theme }) => theme.colors.darkPink};
+    border-radius: 10px;
+    width: 100%;
     text-transform: capitalize;
     color: ${({ theme }) => theme.colors.darkPink};
     cursor: pointer;
     transition: 0.2s all ease-in-out;
     &:hover {
-      text-decoration: underline;
       color: ${({ theme }) => theme.colors.black};
+      border: ${({ theme }) => theme.colors.blck};
     }
   }
 `

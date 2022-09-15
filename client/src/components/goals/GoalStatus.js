@@ -4,14 +4,15 @@ const GoalStatus = ({ books, goal }) => {
   const porcentage = (books.length / goal) * 100
 
   return (
-    <div className='progress'>
-      <div
-        className={porcentage === 0 ? 'zero' : 'porcentage'}
-        style={{ width: porcentage === 0 ? '100%' : `${porcentage}%` }}
-      >
-        <p>Lidos: {books.length}</p>
+    <main>
+      <div className='progress'>
+        <div
+          className={porcentage === 0 ? 'zero' : 'porcentage'}
+          style={{ width: porcentage === 0 ? '100%' : `${porcentage}%` }}
+        ></div>
       </div>
-    </div>
+      <p>{porcentage}% da meta concluída</p>
+    </main>
   )
 }
 

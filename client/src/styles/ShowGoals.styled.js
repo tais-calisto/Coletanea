@@ -12,8 +12,19 @@ export const StyleGoals = styled.section`
     border: 1px solid ${({ theme }) => theme.colors.lightPink};
     border-radius: 10px;
     padding: 1rem;
-    h5 {
+
+    header {
       padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      button {
+        color: ${({ theme }) => theme.colors.darkPink};
+        background: transparent;
+        border: none;
+        &:hover {
+          color: ${({ theme }) => theme.colors.black};
+        }
+      }
     }
     .progress {
       border: 1px solid ${({ theme }) => theme.colors.darkPink};
@@ -29,10 +40,10 @@ export const StyleGoals = styled.section`
         height: 20px;
         color: ${({ theme }) => theme.colors.lightPink};
       }
-      p {
-        font-size: 0.8rem;
-        padding-left: 1rem;
-      }
+    }
+    p {
+      padding-top: 0.5rem;
+      font-size: 0.8rem;
     }
     margin-bottom: 2rem;
   }
