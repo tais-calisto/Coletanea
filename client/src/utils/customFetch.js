@@ -1,5 +1,7 @@
 import axios from 'axios'
 
-const customFetch = axios.create({ baseURL: 'http://coletanea/api/v1' })
+const customFetch = axios.create({
+  baseURL: 'https://coletanea-api.onrender.com',
+})
 
 export default customFetch
