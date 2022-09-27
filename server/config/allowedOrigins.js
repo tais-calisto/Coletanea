@@ -1,6 +1,6 @@
 const allowedOrigins = [
-  'https://coletanea.onrender.com',
-  'https://coletanea.onrender.com/register',
+  'https://coletanea.netlify.app/',
+  'https://coletanea.netlify.app/register',
 ]
 
 export default allowedOrigins
