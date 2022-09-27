@@ -1,15 +1,14 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { StyledHeader } from '../../styles/Header.styled'
-import { IconMenu2, IconSquareX, IconSearch } from '@tabler/icons'
+import { IconMenu2, IconSquareX } from '@tabler/icons'
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
 import UserIcon from './UserIcon'
 import { toggleSidebar } from '../../features/user/userSlice'
 import SearchBookForm from './SearchBookForm'
 
 const Header = () => {
   const dispatch = useDispatch()
-  const { user, isSidebarOpen } = useSelector((store) => store.user)
+  const { isSidebarOpen } = useSelector((store) => store.user)
 
   return (
     <StyledHeader>
