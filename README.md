@@ -1,4 +1,4 @@
-# Rect Blog
+# Coletânea
 
 ## Descrição do projeto
 
@@ -6,7 +6,7 @@ Esse projeto foi desenvolvido como forma de estudo e prática, trata-se de uma a
 
 ## Status
 
-Em andamento
+Em andamento, disponível para visualização em: <a href="https://coletanea.netlify.app/" target="_blank"> Coletâna </a>
 
 ## Tabela de Conteúdos
 
